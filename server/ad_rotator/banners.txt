@@ -1,0 +1,13 @@
+REDIRECT adrotator.asp
+WIDTH 500
+HEIGHT 100
+BORDER 0
+*
+image1.jpg
+https://picsum.photos/
+foto aleatoria
+30
+image2.jpg
+https://picsum.photos/
+foto aleatoria
+60
