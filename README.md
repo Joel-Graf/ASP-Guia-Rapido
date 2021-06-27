@@ -5,83 +5,83 @@ Este reposit√≥rio foi criado com intuito de me familiarizar com a linguagem, dei
 
 ### Objetos internos do ASP
 #### Application:
-	Representa uma aplicaÁ„o ASP (Conjusto de p·ginas ASP de um diretÛrio virtual no servidor)
+	Representa uma aplica√ß√£o ASP (Conjusto de p√°ginas ASP de um diret√≥rio virtual no servidor)
 	* Objetos globais (global.asa).
-	* AplicaÁ„o roda enquanto estiver um browser acessando o servidor.
-	* Vari·veis de aplicaÁ„o podem ser modificadas por qualquer um.
+	* Aplica√ß√£o roda enquanto estiver um browser acessando o servidor.
+	* Vari√°veis de aplica√ß√£o podem ser modificadas por qualquer um.
 	* Eventos Application_OnStart e Application_OnEnd.
 
 #### Session:
-	Representa uma sess„o aberta com um cliente via browser. Quando uma sess„o se fecha, todas as vari·veis pertencentes a sess„o encerrada s„o perdidas.
-	* Se diferencia de aplicaÁ„o, pois È individual a cada usu·rio.
-	* … apagada ao fechar o browser (padr„o).
-	* … mantida atravÈs de cookies (dados no lado do cliente).
-	* Possui o metÛdo ABANDON que encerra a sess„o.
+	Representa uma sess√£o aberta com um cliente via browser. Quando uma sess√£o se fecha, todas as vari√°veis pertencentes a sess√£o encerrada s√£o perdidas.
+	* Se diferencia de aplica√ß√£o, pois √© individual a cada usu√°rio.
+	* √â apagada ao fechar o browser (padr√£o).
+	* √â mantida atrav√©s de cookies (dados no lado do cliente).
+	* Possui o met√≥do ABANDON que encerra a sess√£o.
 	* Eventos Session_OnStart e Session_OnEnd.
 
 #### Request:
-	Representa os dados enviados para a p·gina ASP por um formul·rio ou link do browser do cliente
-	* Possui apenas a coleÁ„o de vari·veis enviadas pelo usu·rio atravÈs de um request HTTP.
+	Representa os dados enviados para a p√°gina ASP por um formul√°rio ou link do browser do cliente
+	* Possui apenas a cole√ß√£o de vari√°veis enviadas pelo usu√°rio atrav√©s de um request HTTP.
 	* QueryString: Valores enviados por GET.
-	* Form: ContÍm todos os campos de um formul·rio enviado por POST.
-	* ServerVariables: ContÈm todas as vari·veis CGI do servidor.
-	* Cookies: Permite o acesso aos cookies do usu·rio Web.
-	* ClienteCertificate: Permite verificar se o cliente possui certificaÁ„o digital (SSL), alÈm de acessar dados a respeito dessa certificaÁ„o
+	* Form: Cont√™m todos os campos de um formul√°rio enviado por POST.
+	* ServerVariables: Cont√©m todas as vari√°veis CGI do servidor.
+	* Cookies: Permite o acesso aos cookies do usu√°rio Web.
+	* ClienteCertificate: Permite verificar se o cliente possui certifica√ß√£o digital (SSL), al√©m de acessar dados a respeito dessa certifica√ß√£o
 
 #### Response:
-	Linhas da p·gina de resposta gerada para o browser do cliente
-	* Obs: Tudo que n„o for script È enviado imediatamente ao cliente, script por padr„o n„o fica armazenado em buffer, portanto alteraÁıes em script devem ser declaradas antes do html para terem efeito.
-	* Buffer: Indica se a resposta gerada dever· ser enviada automaticamente ou se dever· ser armazenada em um buffer (Deve ser o primeiro comando em uma p·gina ASP).
-	* ContentType: … o ContentType do formato MIME da p·gina de resposta.
-	* Expires: Usado para definir tempo em que a p·gina ficar· no cache do usu·rio. Em p·ginas est·ticas um tempo maior È vantajoso, em p·ginas din‚micas a atualizaÁ„o frequente È preferÌvel.
-	* ExpiresAbsolute: ContÈm a data e hora de expiraÁ„o da p·gina.
+	Linhas da p√°gina de resposta gerada para o browser do cliente
+	* Obs: Tudo que n√£o for script √© enviado imediatamente ao cliente, script por padr√£o n√£o fica armazenado em buffer, portanto altera√ß√µes em script devem ser declaradas antes do html para terem efeito.
+	* Buffer: Indica se a resposta gerada dever√° ser enviada automaticamente ou se dever√° ser armazenada em um buffer (Deve ser o primeiro comando em uma p√°gina ASP).
+	* ContentType: √â o ContentType do formato MIME da p√°gina de resposta.
+	* Expires: Usado para definir tempo em que a p√°gina ficar√° no cache do usu√°rio. Em p√°ginas est√°ticas um tempo maior √© vantajoso, em p√°ginas din√¢micas a atualiza√ß√£o frequente √© prefer√≠vel.
+	* ExpiresAbsolute: Cont√©m a data e hora de expira√ß√£o da p√°gina.
 	* Status: Altera as linhas de status gerada pelo servidor.
 
-	* ColeÁ„o de dados - Cookies: Permite criar e alterar os cookies do browser dos usu·rios. Deve ser usado antes de qualquer comando que tambÈm modifique o header http, ou usada com a propriedade buffer = true.
+	* Cole√ß√£o de dados - Cookies: Permite criar e alterar os cookies do browser dos usu√°rios. Deve ser usado antes de qualquer comando que tamb√©m modifique o header http, ou usada com a propriedade buffer = true.
 	** Expire: Data e hora de validade de um cookie.
-	** Path: Caminho do cookie na m·quina do cliente.
-	** Domain: Ser· enviado um cookie para todas as p·ginas contidas no domÌnio especificado.
+	** Path: Caminho do cookie na m√°quina do cliente.
+	** Domain: Ser√° enviado um cookie para todas as p√°ginas contidas no dom√≠nio especificado.
 
-	* Comandos para enviar informaÁıes ao browser:
-	** AddHeader: Adiciona header HTTP ‡ p·gina gerada.
-	** AppendToLog: Nos permite marcar informaÁıes de acesso ou seguranÁa, adicionando um texto ao log do servidor.
-	** BinaryWrite: Envia um dado bin·rio para o browser (Deve ser enviado o ContentType em conjunto).
-	** Clear: Apaga o conte˙do do buffer de resposta do servidor ASP.
-	** End: Encerra p·gina ASP.
-	** Flush: Envia conte˙do do buffer de resposta.
-	** Redirect: Redireciona o browser do cliente para outro endereÁa (Altera header HTTP, deve ser usado antes de outros conte˙dos).
+	* Comandos para enviar informa√ß√µes ao browser:
+	** AddHeader: Adiciona header HTTP √† p√°gina gerada.
+	** AppendToLog: Nos permite marcar informa√ß√µes de acesso ou seguran√ßa, adicionando um texto ao log do servidor.
+	** BinaryWrite: Envia um dado bin√°rio para o browser (Deve ser enviado o ContentType em conjunto).
+	** Clear: Apaga o conte√∫do do buffer de resposta do servidor ASP.
+	** End: Encerra p√°gina ASP.
+	** Flush: Envia conte√∫do do buffer de resposta.
+	** Redirect: Redireciona o browser do cliente para outro endere√ßa (Altera header HTTP, deve ser usado antes de outros conte√∫dos).
 	** Write: Permite o envio de string's para o browser do cliente.
 
 
 #### Server:
-	RepresentaÁ„o do servidor Web onde a p·gina
-	* Tem a propriedade ScriptTimeout, que determina tempo de execuÁ„o do script
-	* MÈtodos:
-		** CreateObject: Cria inst‚ncia de componente ActiveX, para destruir se atribui o valor constante Nothing.
-		** HTMLEncode: Codifica o texto de maneira a n„o interpretar HTML.
-		** MapPath: Verifica o caminho fÌsico de um diretÛrio virtual.
+	Representa√ß√£o do servidor Web onde a p√°gina
+	* Tem a propriedade ScriptTimeout, que determina tempo de execu√ß√£o do script
+	* M√©todos:
+		** CreateObject: Cria inst√¢ncia de componente ActiveX, para destruir se atribui o valor constante Nothing.
+		** HTMLEncode: Codifica o texto de maneira a n√£o interpretar HTML.
+		** MapPath: Verifica o caminho f√≠sico de um diret√≥rio virtual.
 		** URLEnconde: Cofica o texto de maneira correta para URL's.
 
-##### ADO - Conex„o ao Banco de Dados
-	… o metÛdo que veio substituir o DAO e RDO em aplicaÁıes Web, È construido como um objeto ActiveX e abstrai a conex„o ao banco de dados.
-	* Recordset: Objeto que representa um conjunto de registros resultantes do processamento de uma instruÁ„o SQL. Existe 3 formas de gerar um Recordset:
-	** MÈtodo Execute de uma Connection: Set RS = DB.Execute("SELECT * FROM Cli")
-	** MÈtodo Execute de um Command: Inst.CommandText = "Select * FROM Cli" : Set Rs = Inst.Execute
-	** MÈtodo Open do Recordset: Set RS = Server.CreateObject("ADODB.Recordset") : Rs.OpenInst
+##### ADO - Conex√£o ao Banco de Dados
+	√â o met√≥do que veio substituir o DAO e RDO em aplica√ß√µes Web, √© construido como um objeto ActiveX e abstrai a conex√£o ao banco de dados.
+	* Recordset: Objeto que representa um conjunto de registros resultantes do processamento de uma instru√ß√£o SQL. Existe 3 formas de gerar um Recordset:
+	** M√©todo Execute de uma Connection: Set RS = DB.Execute("SELECT * FROM Cli")
+	** M√©todo Execute de um Command: Inst.CommandText = "Select * FROM Cli" : Set Rs = Inst.Execute
+	** M√©todo Open do Recordset: Set RS = Server.CreateObject("ADODB.Recordset") : Rs.OpenInst
 
-	* Field: Objeto associado a coleÁ„o fields, representa campos de um recordset.
+	* Field: Objeto associado a cole√ß√£o fields, representa campos de um recordset.
 
-	Objeto Connection: Para criar um objeto connection, devemos ter um datasource ODBC criado previamente, ou criar manualmente atravÈs da string de conex„o.
+	Objeto Connection: Para criar um objeto connection, devemos ter um datasource ODBC criado previamente, ou criar manualmente atrav√©s da string de conex√£o.
 	Propriedades:
-	* CommandTimeout: Tempo m·ximo de espera pela execuÁ„o de um comando.
-	* ConnectionString: String de conex„o ao banco de dados ODBC. Pode ser nome do datasource ou os par‚metros ODBC. Essa propriedade pode ser omitida caso seja usado o mÈtodo Open, informando diretamente nele o ConnectionString.
-	* Connection.Timeout: Tempo m·ximo para tentar abrir uma conex„o.
-	MÈtodos:
-	* Open: Abre uma Connection iniciando uma tentativa de conex„o com o Banco de Dados.
-	* Close: Fecha uma conex„o ativa, liberando os recurso do servidor de Banco de Dados.
-	* Execute Esse mÈtodo executa um comando atravÈs de um objeto Connection.
-	* BeginTrans: Inicia uma transaÁ„o no Banco de Dados, caso seja possÌvel (Permite Rollback).
-	* CommitTrans: Encerra transaÁ„o com sucesso.
-	* RollBackTrans: Finaliza transaÁ„o voltando ao estado anterior.
+	* CommandTimeout: Tempo m√°ximo de espera pela execu√ß√£o de um comando.
+	* ConnectionString: String de conex√£o ao banco de dados ODBC. Pode ser nome do datasource ou os par√¢metros ODBC. Essa propriedade pode ser omitida caso seja usado o m√©todo Open, informando diretamente nele o ConnectionString.
+	* Connection.Timeout: Tempo m√°ximo para tentar abrir uma conex√£o.
+	M√©todos:
+	* Open: Abre uma Connection iniciando uma tentativa de conex√£o com o Banco de Dados.
+	* Close: Fecha uma conex√£o ativa, liberando os recurso do servidor de Banco de Dados.
+	* Execute Esse m√©todo executa um comando atrav√©s de um objeto Connection.
+	* BeginTrans: Inicia uma transa√ß√£o no Banco de Dados, caso seja poss√≠vel (Permite Rollback).
+	* CommitTrans: Encerra transa√ß√£o com sucesso.
+	* RollBackTrans: Finaliza transa√ß√£o voltando ao estado anterior.
 
 	Objeto Recordset
